@@ -6,6 +6,7 @@ import difflib
 from db import connect_db
 import time
 import os
+from dotenv import load_dotenv
 from datetime import datetime
 import io
 import openpyxl
@@ -18,8 +19,10 @@ import uuid
 from otp import send_otp_sms
 from profanity import check_profanity
 
+load_dotenv()
+
 app =Flask(__name__)
-app.secret_key = 'actbayan_secret_key_2026'
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 
 
@@ -45,7 +48,7 @@ def check_password_bcrypt(stored_hash, password: str) -> bool:
 
 
 # ===== OPENROUTER AI (duplicate-block security) =====
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "apodex/apodex-1.1-mini:free")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 

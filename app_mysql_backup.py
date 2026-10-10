@@ -17,7 +17,7 @@ from otp import send_otp_sms
 from profanity import check_profanity
 
 app =Flask(__name__)
-app.secret_key = 'actbayan_secret_key_2026'
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 def connect_db():
     return mysql.connector.connect(

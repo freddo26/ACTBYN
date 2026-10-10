@@ -2,8 +2,11 @@ import os
 import secrets
 import string
 import time
+from dotenv import load_dotenv
 from flask import Flask, session
 import requests
+
+load_dotenv()
 
 
 def generate_otp(length=6):
@@ -29,7 +32,7 @@ def send_otp_sms(phone_number):
         f"It will expire in 10 minutes. Do not share this code."
     )
 
-    api_key = os.environ.get('TEXTBEE_API_KEY', 'txb_1PEJCKYRqeIGtyVTCFS0mNxvei5Y8OX7')
+    api_key = os.environ.get('TEXTBEE_API_KEY')
 
     if not api_key:
         return {
@@ -44,7 +47,7 @@ def send_otp_sms(phone_number):
                 'x-api-key': api_key
             },
             json={
-                'deviceId': '6ac7151c2597187c9c33ca6e',
+                'deviceId': os.environ.get('TEXTBEE_DEVICE_ID', ''),
                 'recipients': [phone_number],
                 'message': message_text
             },
