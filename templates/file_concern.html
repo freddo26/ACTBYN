@@ -1227,7 +1227,6 @@
                 <button class="chip" data-filter="sanitation">Sanitation</button>
                 <button class="chip" data-filter="flooding">Flooding</button>
                 <button class="chip" data-filter="lighting">Lighting</button>
-                <button class="chip" data-filter="safety">Safety</button>
             </div>
 
             <div class="concern-feed" id="concern-feed">
@@ -1409,7 +1408,7 @@
         <div>
             <div class="quick-submit">
                 <div class="qs-title">See something wrong?</div>
-                <p class="qs-sub">Report infrastructure issues, sanitation problems, safety hazards, and more. Your report matters.</p>
+                <p class="qs-sub">Report infrastructure issues, sanitation problems, hazards, and more. Your report matters.</p>
                 {% if user and user.account_status == 'Verified' %}
                 <button class="qs-btn" onclick="openModal()">
                     <i class="fas fa-plus"></i> Submit a Concern
@@ -1487,11 +1486,6 @@
                         <span class="modal-cat-emoji">💡</span>
                         <div class="modal-cat-name">Lighting</div>
                         <div class="modal-cat-desc">Broken streetlights</div>
-                    </div>
-                    <div class="modal-cat-tile" data-cat="Safety" onclick="mSelectCat(this)">
-                        <span class="modal-cat-emoji">🚨</span>
-                        <div class="modal-cat-name">Safety</div>
-                        <div class="modal-cat-desc">Hazards, risks</div>
                     </div>
                     <div class="modal-cat-tile" data-cat="Other" onclick="mSelectCat(this)">
                         <span class="modal-cat-emoji">📋</span>
